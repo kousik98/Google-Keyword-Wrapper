@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Keyword Wrapper Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1 style="color: #1CAC78;font-weight: 900;">Processed Keywords</h1>
+    <!-- <div class="adsbox">
+        <div class="ads">
+            <h1></h1>
+            <p></p>
+        </div>
+    </div><br> -->
+    
+    <div class="container">
+    
+        <div class="keyword-box phrase">
+            <button class="copy-button" onclick="copyKeywords('phraseKeywords')">Copy</button>
+            <h2>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Phrase Match</h2>
+            <ul id="phraseKeywords">
+                {% for keyword in processed_keywords['phrase'] %}
+                    <li>{{ keyword }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="keyword-box exact">
+            <button class="copy-button" onclick="copyKeywords('exactKeywords')">Copy</button>
+            <h2>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;    Exact Match</h2>
+            <ul id="exactKeywords">
+                {% for keyword in processed_keywords['exact'] %}
+                    <li>{{ keyword }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="keyword-box negative">
+            <button class="copy-button" onclick="copyKeywords('negativeKeywords')">Copy</button>
+            <h2>&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;   Negative Keywords</h2>
+            <ul id="negativeKeywords">
+                {% for keyword in processed_keywords['negative'] %}
+                    <li>{{ keyword }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <!-- <div class="adsbox">
+        <div class="ads">
+            <h1></h1>
+            <p></p>
+        </div>
+    </div><br> -->
+    <footer>
+        Privacy Policy  &nbsp;&nbsp;  About us  &nbsp;&nbsp;  Contact Information  &nbsp;&nbsp;   Email Sign-up
+    </footer>
+
+    <script>
+        function copyKeywords(id) {
+            var keywordsText = document.getElementById(id).innerText;
+            navigator.clipboard.writeText(keywordsText).then(function() {
+                alert("Keywords copied to clipboard!");
+            }, function() {
+                alert("Error copying keywords to clipboard!");
+            });
+        }
+    </script>
+</body>
+</html>
